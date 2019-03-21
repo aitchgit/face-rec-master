@@ -1,0 +1,23 @@
+.signin-container {
+    margin-top: 10em;
+    background-color: #f8f9fd;
+    min-height: 650px;
+}
+
+.container-image {
+    background-image: url("./signin-image.svg");    
+    height: 650px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.content-column {
+    padding: 2em;
+}
+
+.content-column-header {
+    padding-top: 1em;
+    margin-bottom: 3em;
+}
