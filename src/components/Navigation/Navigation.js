@@ -14,7 +14,6 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
                 <Container>
                     <Menu.Item as='a' header><Image size='mini' src={logo} /></Menu.Item>
                     <Menu.Menu position='right'>
-                    <Menu.Item as='a'>About</Menu.Item>
                     <Menu.Item onClick={() => onRouteChange('signin')} as='a'>Sign Out</Menu.Item>
                     </Menu.Menu>
                 </Container>                
@@ -26,7 +25,6 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
                 <Container>
                     <Menu.Item as='a' header><Image size='mini' src={logo} /></Menu.Item>
                     <Menu.Menu position='right'>
-                    <Menu.Item as='a'>About</Menu.Item>
                     <Menu.Item onClick={() => onRouteChange('signin')} as='a'>Sign In</Menu.Item>
                     </Menu.Menu>
                 </Container>                

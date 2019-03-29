@@ -5,6 +5,8 @@ import Register from './components/Register/Register';
 import HomeScreen from './components/HomeScreen/HomeScreen';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
+import Modal from './components/Modal/Modal';
+import Profile from './components/Profile/Profile';
 import './App.css';
 import {  
   Container,
@@ -147,18 +149,31 @@ class App extends Component {
     this.setState({route: route});
   }
 
+  toggleModal = () => {
+    this.setState(state => ({
+      ...state,
+      isProfileOpen: !state.isProfileOpen,
+    }));
+  }
+
   render() {
-    const { isSignedIn, route, imageUrl, boxes } = this.state;
+    const { isSignedIn, route, imageUrl, boxes, isProfileOpen, user } = this.state;
     return (
       <div className="App">
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
+        {
+          isProfileOpen &&
+          <Modal>
+            <Profile isProfileOpen={isProfileOpen} toggleModal={this.toggleModal} user={user} loadUser={this.loadUser} />
+          </Modal>
+        }
         { route === 'home' ? 
           <div>
             <Container className="homescreen-container">
             <Grid centered stackable columns={2}>
               <Grid.Column>
-              <ImageLinkForm onInputChange={this.onInputChange} onUrlSubmit={this.onUrlSubmit} />
-              <HomeScreen name={this.state.user.name} entries={this.state.user.entries}/>
+              <HomeScreen name={this.state.user.name} entries={this.state.user.entries} toggleModal={this.toggleModal} />
+              <ImageLinkForm onInputChange={this.onInputChange} onUrlSubmit={this.onUrlSubmit} />              
               </Grid.Column>              
               <Grid.Column>
               <FaceRecognition boxes={boxes} imageUrl={imageUrl} />
